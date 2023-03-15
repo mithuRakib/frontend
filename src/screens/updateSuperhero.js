@@ -99,8 +99,13 @@ const UpdateSuperhero = () => {
   ]);
 
   useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     const fetchPublishers = async () => {
-      const { data } = await axios.get(`/publishers`);
+      const { data } = await axios.get(`${BASE_URL}/publishers`, config);
 
       setPublishers(data);
     };
