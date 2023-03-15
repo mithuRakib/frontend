@@ -9,8 +9,13 @@ const Card = ({ resource, limit }) => {
   const queryString = limit ? `?_limit=${limit}` : ``;
 
   useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     const fetchData = async () => {
-      const { data } = await axios.get(`/${resource}${queryString}`);
+      const { data } = await axios.get(`/${resource}${queryString}`, config);
 
       setResourceData(data);
     };

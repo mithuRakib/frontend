@@ -19,8 +19,13 @@ const Superhero = () => {
   const [Powerstats, setPowerstats] = useState({});
 
   useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     const fetchSuperhero = async () => {
-      const { data } = await axios.get(path.pathname);
+      const { data } = await axios.get(path.pathname, config);
       setSuperhero(data);
       setPowerstats(data.powerstats);
     };

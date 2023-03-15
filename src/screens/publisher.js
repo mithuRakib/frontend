@@ -18,8 +18,13 @@ const Publisher = () => {
   const [Publisher, setPublisher] = useState({});
 
   useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     const fetchPublisher = async () => {
-      const { data } = await axios.get(path.pathname);
+      const { data } = await axios.get(path.pathname, config);
       setPublisher(data);
     };
     fetchPublisher();
