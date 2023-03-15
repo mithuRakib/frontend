@@ -41,16 +41,6 @@ const UpdateSuperhero = () => {
       publisher: Publishers.find((val) => val.id === PublisherId).name,
     };
 
-    setName(Superhero.name);
-    setImage(Superhero.image);
-    setIntelligence(Powerstats.intelligence);
-    setStrength(Powerstats.strength);
-    setSpeed(Powerstats.speed);
-    setDurability(Powerstats.durability);
-    setPower(Powerstats.power);
-    setCombat(Powerstats.combat);
-    setPublisherId(Superhero.PublisherId);
-
     const updateSuperhero = async () => {
       try {
         const config = {
@@ -83,19 +73,29 @@ const UpdateSuperhero = () => {
       const { data } = await axios.get(`${BASE_URL}/superheroes/${id}`, config);
       setSuperhero(data);
       setPowerstats(data.powerstats);
+
+      setName(Superhero.name);
+      setImage(Superhero.image);
+      setIntelligence(Powerstats.intelligence);
+      setStrength(Powerstats.strength);
+      setSpeed(Powerstats.speed);
+      setDurability(Powerstats.durability);
+      setPower(Powerstats.power);
+      setCombat(Powerstats.combat);
+      setPublisherId(Superhero.PublisherId);
     };
     fetchSuperhero();
   }, [
     id,
     Superhero.name,
     Superhero.image,
-    Powerstats.Intelligence,
-    Powerstats.Strength,
-    Powerstats.speed,
-    Powerstats.durability,
-    Powerstats.power,
-    Powerstats.combat,
-    Superhero.PublisherId,
+    // Powerstats.Intelligence,
+    // Powerstats.Strength,
+    // Powerstats.speed,
+    // Powerstats.durability,
+    // Powerstats.power,
+    // Powerstats.combat,
+    // Superhero.PublisherId,
   ]);
 
   useEffect(() => {
