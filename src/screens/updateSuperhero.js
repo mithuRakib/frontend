@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateSuperhero = () => {
+  const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
   const id = useParams().id;
   const [Superhero, setSuperhero] = useState({});
   const [Powerstats, setPowerstats] = useState({});
@@ -51,7 +52,6 @@ const UpdateSuperhero = () => {
     setPublisherId(Superhero.PublisherId);
 
     const updateSuperhero = async () => {
-      const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
       try {
         const config = {
           headers: {

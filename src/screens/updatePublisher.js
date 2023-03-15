@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const UpdatePublisher = () => {
+  const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
   const [Publisher, setPublisher] = useState({});
   const id = useParams().id;
 
@@ -23,7 +24,6 @@ const UpdatePublisher = () => {
     };
 
     const updatePublisher = async () => {
-      const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
       try {
         const config = {
           headers: {
