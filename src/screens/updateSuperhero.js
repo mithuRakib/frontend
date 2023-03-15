@@ -74,8 +74,13 @@ const UpdateSuperhero = () => {
   };
 
   useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     const fetchSuperhero = async () => {
-      const { data } = await axios.get(`${BASE_URL}/superheroes/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/superheroes/${id}`, config);
       setSuperhero(data);
       setPowerstats(data.powerstats);
     };
@@ -237,7 +242,9 @@ const UpdateSuperhero = () => {
             Publisher:{" "}
           </div>
           {!Publishers.length ? (
-            <button type="button">Add a new publisher</button>
+            <button type="button" onClick={() => navigate(`/publishers`)}>
+              Add a new publisher
+            </button>
           ) : (
             <select
               className="w-full bg-green-500/30 focused:bg-green-500 text-white accent-green-500 p-4"

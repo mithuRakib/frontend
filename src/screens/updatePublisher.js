@@ -46,8 +46,13 @@ const UpdatePublisher = () => {
   };
 
   useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     const fetchPublisher = async () => {
-      const { data } = await axios.get(`${BASE_URL}/publishers/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/publishers/${id}`, config);
 
       setPublisher(data);
       setName(Publisher.name);
