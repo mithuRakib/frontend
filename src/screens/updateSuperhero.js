@@ -75,7 +75,7 @@ const UpdateSuperhero = () => {
 
   useEffect(() => {
     const fetchSuperhero = async () => {
-      const { data } = await axios.get(`/superheroes/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/superheroes/${id}`);
       setSuperhero(data);
       setPowerstats(data.powerstats);
     };

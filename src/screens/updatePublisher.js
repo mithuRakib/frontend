@@ -47,7 +47,7 @@ const UpdatePublisher = () => {
 
   useEffect(() => {
     const fetchPublisher = async () => {
-      const { data } = await axios.get(`/publishers/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/publishers/${id}`);
 
       setPublisher(data);
       setName(Publisher.name);
