@@ -19,13 +19,14 @@ const Superhero = () => {
   const [Powerstats, setPowerstats] = useState({});
 
   useEffect(() => {
+    const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
     const fetchSuperhero = async () => {
-      const { data } = await axios.get(path.pathname, config);
+      const { data } = await axios.get(`${BASE_URL}/${path.pathname}`, config);
       setSuperhero(data);
       setPowerstats(data.powerstats);
     };

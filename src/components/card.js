@@ -9,13 +9,17 @@ const Card = ({ resource, limit }) => {
   const queryString = limit ? `?_limit=${limit}` : ``;
 
   useEffect(() => {
+    const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
     const fetchData = async () => {
-      const { data } = await axios.get(`/${resource}${queryString}`, config);
+      const { data } = await axios.get(
+        `${BASE_URL}/${resource}${queryString}`,
+        config
+      );
 
       setResourceData(data);
     };

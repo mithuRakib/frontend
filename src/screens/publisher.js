@@ -18,13 +18,14 @@ const Publisher = () => {
   const [Publisher, setPublisher] = useState({});
 
   useEffect(() => {
+    const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
     const fetchPublisher = async () => {
-      const { data } = await axios.get(path.pathname, config);
+      const { data } = await axios.get(`${BASE_URL}/${path.pathname}`, config);
       setPublisher(data);
     };
     fetchPublisher();
