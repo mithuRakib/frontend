@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SuperheroForm = () => {
+  const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
   const [Name, setName] = useState("");
   const [Image, setImage] = useState("");
   const [Intelligence, setIntelligence] = useState(0);
@@ -19,7 +20,6 @@ const SuperheroForm = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log(`${Name} ${Image} ${Intelligence} ${Publisher}`);
 
     const superhero = {
       name: Name,
@@ -37,7 +37,6 @@ const SuperheroForm = () => {
     };
 
     const createNewSuperhero = async () => {
-      const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
       try {
         const config = {
           headers: {
@@ -59,8 +58,13 @@ const SuperheroForm = () => {
     navigate("/superheroes");
   };
   useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     const fetchPublishers = async () => {
-      const { data } = await axios.get(`/publishers`);
+      const { data } = await axios.get(`${BASE_URL}/publishers`, config);
 
       setPublishers(data);
     };
