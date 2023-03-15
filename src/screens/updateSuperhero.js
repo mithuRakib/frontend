@@ -76,26 +76,26 @@ const UpdateSuperhero = () => {
 
       setName(Superhero.name);
       setImage(Superhero.image);
+      setPublisherId(Superhero.PublisherId);
       setIntelligence(Powerstats.intelligence);
       setStrength(Powerstats.strength);
       setSpeed(Powerstats.speed);
       setDurability(Powerstats.durability);
       setPower(Powerstats.power);
       setCombat(Powerstats.combat);
-      setPublisherId(Superhero.PublisherId);
     };
     fetchSuperhero();
   }, [
     id,
     Superhero.name,
     Superhero.image,
-    // Powerstats.Intelligence,
-    // Powerstats.Strength,
-    // Powerstats.speed,
-    // Powerstats.durability,
-    // Powerstats.power,
-    // Powerstats.combat,
-    // Superhero.PublisherId,
+    Superhero.PublisherId,
+    Powerstats.Intelligence,
+    Powerstats.Strength,
+    Powerstats.speed,
+    Powerstats.durability,
+    Powerstats.power,
+    Powerstats.combat,
   ]);
 
   useEffect(() => {
