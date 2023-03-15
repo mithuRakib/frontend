@@ -19,6 +19,7 @@ const PublisherForm = () => {
     };
 
     const createNewPublisher = async () => {
+      const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
       try {
         const config = {
           headers: {
@@ -26,7 +27,11 @@ const PublisherForm = () => {
           },
         };
 
-        const { data } = await axios.post(`/publishers`, publisher, config);
+        const { data } = await axios.post(
+          `${BASE_URL}/publishers`,
+          publisher,
+          config
+        );
         console.log(data);
       } catch (error) {
         console.log(error);

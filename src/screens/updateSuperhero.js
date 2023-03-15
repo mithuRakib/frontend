@@ -51,6 +51,7 @@ const UpdateSuperhero = () => {
     setPublisherId(Superhero.PublisherId);
 
     const updateSuperhero = async () => {
+      const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
       try {
         const config = {
           headers: {
@@ -59,7 +60,7 @@ const UpdateSuperhero = () => {
         };
 
         const { data } = await axios.put(
-          `/superheroes/${id}`,
+          `${BASE_URL}/superheroes/${id}`,
           superhero,
           config
         );

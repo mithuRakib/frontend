@@ -23,6 +23,7 @@ const UpdatePublisher = () => {
     };
 
     const updatePublisher = async () => {
+      const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
       try {
         const config = {
           headers: {
@@ -31,7 +32,7 @@ const UpdatePublisher = () => {
         };
 
         const { data } = await axios.put(
-          `/publishers/${id}`,
+          `${BASE_URL}/publishers/${id}`,
           publisher,
           config
         );

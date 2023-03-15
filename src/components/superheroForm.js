@@ -37,6 +37,7 @@ const SuperheroForm = () => {
     };
 
     const createNewSuperhero = async () => {
+      const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
       try {
         const config = {
           headers: {
@@ -44,7 +45,11 @@ const SuperheroForm = () => {
           },
         };
 
-        const { data } = await axios.post(`/superheroes`, superhero, config);
+        const { data } = await axios.post(
+          `${BASE_URL}/superheroes`,
+          superhero,
+          config
+        );
         console.log(data);
       } catch (error) {
         console.log(error);

@@ -1,7 +1,6 @@
 {
   "homepage": "https://mithurakib.github.io/frontend/",
   "name": "jelena",
-  "proxy": "https://rich-rose-panda-gear.cyclic.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
