@@ -31,6 +31,7 @@ function App() {
         <Route path="/superheroes/:id" element={<Superhero />} />
         <Route path="/superheroes/:id/update" element={<UpdateSuperhero />} />
       </Routes>
+      <Home />
     </div>
   );
 }
