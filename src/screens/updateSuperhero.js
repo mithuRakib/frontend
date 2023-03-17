@@ -6,7 +6,7 @@ const UpdateSuperhero = () => {
   const BASE_URL = "https://rich-rose-panda-gear.cyclic.app";
   const id = useParams().id;
   const [Superhero, setSuperhero] = useState({});
-  const [Powerstats, setPowerstats] = useState({});
+  const [Powerstats, setPowerstats] = useState(Superhero.powerstats);
 
   const [Name, setName] = useState("");
   const [Image, setImage] = useState("");
@@ -64,40 +64,38 @@ const UpdateSuperhero = () => {
   };
 
   useEffect(() => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
     const fetchSuperhero = async () => {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
       const { data } = await axios.get(`${BASE_URL}/superheroes/${id}`, config);
       setSuperhero(data);
       setPowerstats(data.powerstats);
-
-      setName(Superhero.name);
-      setImage(Superhero.image);
-      setPublisherId(Superhero.PublisherId);
-      setIntelligence(Powerstats.intelligence);
-      setStrength(Powerstats.strength);
-      setSpeed(Powerstats.speed);
-      setDurability(Powerstats.durability);
-      setPower(Powerstats.power);
-      setCombat(Powerstats.combat);
     };
     fetchSuperhero();
-  }, [
-    id,
-    Superhero.name,
-    Superhero.image,
-    Superhero.PublisherId,
-    Powerstats.Intelligence,
-    Powerstats.Strength,
-    Powerstats.speed,
-    Powerstats.durability,
-    Powerstats.power,
-    Powerstats.combat,
-  ]);
+  }, [id]);
 
+  // setName(Superhero.name);
+  // setImage(Superhero.image);
+  // setPublisherId(Superhero.PublisherId);
+  // setIntelligence(Powerstats.intelligence);
+  // setStrength(Powerstats.strength);
+  // setSpeed(Powerstats.speed);
+  // setDurability(Powerstats.durability);
+  // setPower(Powerstats.power);
+  // setCombat(Powerstats.combat);
+
+  // Superhero.name,
+  // Superhero.image,
+  // Superhero.PublisherId,
+  // Powerstats.Intelligence,
+  // Powerstats.Strength,
+  // Powerstats.speed,
+  // Powerstats.durability,
+  // Powerstats.power,
+  // Powerstats.combat,
   useEffect(() => {
     const config = {
       headers: {
@@ -112,7 +110,7 @@ const UpdateSuperhero = () => {
 
     fetchPublishers();
     // fetchSuperhero();
-  }, [id]);
+  }, []);
 
   return (
     <div id="formComponent">
@@ -130,7 +128,7 @@ const UpdateSuperhero = () => {
             type="text"
             name="name"
             id=""
-            value={Name}
+            value={Superhero.name}
             onChange={(e) => setName(e.target.value)}
           />
         </label>
@@ -142,13 +140,14 @@ const UpdateSuperhero = () => {
             type="text"
             name="image"
             id=""
-            value={Image}
+            value={Superhero.image}
             onChange={(e) => setImage(e.target.value)}
           />
         </label>
         <div className="font-bold text-2xl text-white pt-3 pb-1">
           Powerstats:{" "}
         </div>
+
         <label
           htmlFor="intelligence"
           className="font-bold text-lg text-white py-2"
@@ -161,7 +160,7 @@ const UpdateSuperhero = () => {
             id=""
             min={0}
             max={100}
-            value={Intelligence}
+            value={Powerstats && Powerstats["intelligence"]}
             onChange={(e) => setIntelligence(e.target.value)}
           />
         </label>
@@ -175,7 +174,7 @@ const UpdateSuperhero = () => {
             id=""
             min={0}
             max={100}
-            value={Strength}
+            value={Powerstats && Powerstats["strength"]}
             onChange={(e) => setStrength(e.target.value)}
           />
         </label>
@@ -189,7 +188,7 @@ const UpdateSuperhero = () => {
             id=""
             min={0}
             max={100}
-            value={Speed}
+            value={Powerstats && Powerstats["speed"]}
             onChange={(e) => setSpeed(e.target.value)}
           />
         </label>
@@ -206,7 +205,7 @@ const UpdateSuperhero = () => {
             id=""
             min={0}
             max={100}
-            value={Durability}
+            value={Powerstats && Powerstats["durability"]}
             onChange={(e) => setDurability(e.target.value)}
           />
         </label>
@@ -220,7 +219,7 @@ const UpdateSuperhero = () => {
             id=""
             min={0}
             max={100}
-            value={Power}
+            value={Powerstats && Powerstats["power"]}
             onChange={(e) => setPower(e.target.value)}
           />
         </label>
@@ -234,7 +233,7 @@ const UpdateSuperhero = () => {
             id=""
             min={0}
             max={100}
-            value={Combat}
+            value={Powerstats && Powerstats["combat"]}
             onChange={(e) => setCombat(e.target.value)}
           />
         </label>
@@ -255,8 +254,8 @@ const UpdateSuperhero = () => {
               className="w-full bg-green-500/30 focused:bg-green-500 text-white accent-green-500 p-4"
               name="publisher"
               id=""
-              value={PublisherId}
-              onClick={(e) => setPublisherId(e.target.value)}
+              value={Superhero.publisherId}
+              onChange={(e) => setPublisherId(e.target.value)}
             >
               {Publishers.map((publisher) => (
                 <option

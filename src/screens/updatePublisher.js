@@ -55,12 +55,12 @@ const UpdatePublisher = () => {
       const { data } = await axios.get(`${BASE_URL}/publishers/${id}`, config);
 
       setPublisher(data);
-      setName(Publisher.name);
-      setImage(Publisher.image);
-      setDescription(Publisher.description);
+      // setName(Publisher.name);
+      // setImage(Publisher.image);
+      // setDescription(Publisher.description);
     };
     fetchPublisher();
-  }, [id, Publisher.name, Publisher.image, Publisher.description]);
+  }, [id]);
 
   return (
     <div id="formComponent">
@@ -78,7 +78,7 @@ const UpdatePublisher = () => {
             type="text"
             name="name"
             id=""
-            value={Name}
+            value={Publisher.name}
             onChange={(e) => setName(e.target.value)}
           />
         </label>
@@ -90,7 +90,7 @@ const UpdatePublisher = () => {
             type="text"
             name="image"
             id=""
-            value={Image}
+            value={Publisher.image}
             onChange={(e) => setImage(e.target.value)}
           />
         </label>
@@ -102,7 +102,7 @@ const UpdatePublisher = () => {
             type="text"
             name="image"
             id=""
-            value={Description}
+            value={Publisher.description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
         </label>
