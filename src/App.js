@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index path="/" element={<Home />} />
         <Route path="/publishers" element={<Publishers />} />
         <Route path="/publishers/create" element={<CreatePublisher />} />
         <Route path="/publishers/:id" element={<Publisher />} />
